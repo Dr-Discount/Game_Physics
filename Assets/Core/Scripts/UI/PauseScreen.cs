@@ -27,6 +27,7 @@ namespace CGL.UI
 		private EventSO onPauseChangedEvent;
 
 		private bool paused = false;
+		public bool canPause = true;
 
 		private void OnEnable()
 		{
@@ -40,9 +41,12 @@ namespace CGL.UI
 
 		private void OnPauseChanged()
 		{
-			if (pauseData == null) return;
-			pausePanel?.SetActive(pauseData.value);
-			paused = !paused;
+			if (canPause)
+			{
+				if (pauseData == null) return;
+				pausePanel?.SetActive(pauseData.value);
+				paused = !paused;
+			}
 		}
 
 		public void OnResume()
